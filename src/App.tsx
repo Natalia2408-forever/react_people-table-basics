@@ -1,61 +1,71 @@
-import { Loader } from './components/Loader';
-
 import './App.scss';
+import { NavBar } from './components/Navbar';
+import { Outlet } from 'react-router-dom';
 
-export const App = () => (
-  <div data-cy="app">
-    <nav
-      data-cy="nav"
-      className="navbar is-fixed-top has-shadow"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="container">
-        <div className="navbar-brand">
-          <a className="navbar-item" href="#/">
-            Home
-          </a>
-
-          <a
-            className="navbar-item has-background-grey-lighter"
-            href="#/people"
-          >
-            People
-          </a>
-        </div>
+export const App = () => {
+  return (
+    <>
+      <div data-cy="app">
+        <NavBar />
+        <Outlet />
       </div>
-    </nav>
+    </>
+  );
+};
 
-    <main className="section">
-      <div className="container">
-        <h1 className="title">Home Page</h1>
-        <h1 className="title">People Page</h1>
-        <h1 className="title">Page not found</h1>
+/*<div data-cy="app">
+    -<nav
+      -data-cy="nav"
+      -className="navbar is-fixed-top has-shadow"
+      -role="navigation"
+      -aria-label="main navigation"
+    ->
+      -<div className="container">
+        -<div className="navbar-brand">
+         - <a className="navbar-item" href="#/">
+          -  Home
+         - </a>
 
-        <div className="block">
-          <div className="box table-container">
-            <Loader />
+         - <a
+         -   className="navbar-item has-background-grey-lighter"
+          -  href="#/people"
+         - >
+         -   People
+         - </a>
+        -</div>
+     - </div>
+   - </nav>
 
-            <p data-cy="peopleLoadingError" className="has-text-danger">
-              Something went wrong
-            </p>
+  -  <main className="section">
+     - <div className="container">
+      -  <h1 className="title">Home Page</h1>
+      -  <h1 className="title">People Page</h1>
+       - <h1 className="title">Page not found</h1>
 
-            <p data-cy="noPeopleMessage">There are no people on the server</p>
+        -<div className="block">
+          -<div className="box table-container">
+           - <Loader />
 
-            <table
-              data-cy="peopleTable"
-              className="table is-striped is-hoverable is-narrow is-fullwidth"
-            >
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Sex</th>
-                  <th>Born</th>
-                  <th>Died</th>
-                  <th>Mother</th>
-                  <th>Father</th>
-                </tr>
-              </thead>
+           - <p data-cy="peopleLoadingError" className="has-text-danger">
+            -  Something went wrong
+            -</p>
+
+            -<p data-cy="noPeopleMessage">There are no people on the server</p>
+
+            -<table
+            -  data-cy="peopleTable"
+            -  className="table is-striped is-hoverable is-narrow is-fullwidth"
+           - >
+            -  <thead>
+             -   <tr>
+             -     <th>Name</th>
+             -     <th>Sex</th>
+             -     <th>Born</th>
+              -    <th>Died</th>
+              -    <th>Mother</th>
+             -     <th>Father</th>
+            -    </tr>
+           -   </thead>
 
               <tbody>
                 <tr data-cy="person">
@@ -164,4 +174,4 @@ export const App = () => (
       </div>
     </main>
   </div>
-);
+);*/
