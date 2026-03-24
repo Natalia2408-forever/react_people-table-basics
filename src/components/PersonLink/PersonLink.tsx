@@ -27,14 +27,12 @@ export const PersonLink: React.FC<Props> = ({ person, peopleList }) => {
     <tr
       data-cy="person"
       className={classNames({
-        'has-background-warning': personName?.includes(
-          normalizedName(person.name),
-        ),
+        'has-background-warning': personName === normalizedName(person.name),
       })}
     >
       <td>
         <Link
-          to={`./${normalizedName(person.name)}`}
+          to={`/people/${normalizedName(person.name)}`}
           className={classNames({ 'has-text-danger': person.sex === 'f' })}
         >
           {person.name}
@@ -47,7 +45,7 @@ export const PersonLink: React.FC<Props> = ({ person, peopleList }) => {
         {person.motherName && isPerson(person.motherName) ? (
           <Link
             className="has-text-danger"
-            to={`./${normalizedName(person.motherName)}`}
+            to={`/people/${normalizedName(person.motherName)}`}
           >
             {person.motherName}
           </Link>
@@ -59,7 +57,7 @@ export const PersonLink: React.FC<Props> = ({ person, peopleList }) => {
       </td>
       <td>
         {person.fatherName && isPerson(person.fatherName) ? (
-          <Link to={`./${normalizedName(person.fatherName)}`}>
+          <Link to={`/people/${normalizedName(person.fatherName)}`}>
             {person.fatherName}
           </Link>
         ) : person.fatherName ? (
