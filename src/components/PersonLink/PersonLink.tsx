@@ -1,4 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { Person } from '../../types';
+
+type Props = {
+  name: string;
+  peopleList: Person[];
+};
+
+export const PersonLink: React.FC<Props> = ({ name, peopleList }) => {
+  const person = peopleList.find(p => p.name === name);
+
+  if (!person) {
+    return <>{name || '-'}</>;
+  }
+
+  const slug = `${person.name} ${person.born ?? ''}`
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/,/g, '-')
+    .toLowerCase();
+
+  return (
+    <Link
+      to={`/people/${slug}`}
+      className={classNames({ 'has-text-danger': person.sex === 'f' })}
+    >
+      {person.name}
+    </Link>
+  );
+};
+
+/*import React from 'react';
 import { Person } from '../../types';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -68,4 +101,4 @@ export const PersonLink: React.FC<Props> = ({ person, peopleList }) => {
       </td>
     </tr>
   );
-};
+};*/
